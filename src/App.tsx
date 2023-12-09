@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import socket from "./socket";
-import { Gamestate } from "../../server/types";
 import { Corner, CornerProps } from "./components/Corner/Corner";
 import { Lobby } from "./components/Lobby/Lobby";
 import { Stats } from "./components/Stats/Stats";
 import { Game } from "./components/Game/Game";
+import { Gamestate } from "./types";
 
 const CORNERS: Array<CornerProps["which"]> = [
   "top-left",

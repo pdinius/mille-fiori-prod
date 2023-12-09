@@ -178,7 +178,7 @@ export const Workshops: FC = () => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate, chooseSpace } = state;
@@ -197,7 +197,7 @@ export const Workshops: FC = () => {
     );
   };
 
-  return state === undefined ? undefined : (
+  return state === undefined ? <></> : (
     <>
       {/* POINTS */}
       {gamestate.bonus.Workshops.map((color, i) => (

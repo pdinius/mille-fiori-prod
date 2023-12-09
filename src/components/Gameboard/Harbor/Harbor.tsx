@@ -89,7 +89,7 @@ export const Harbor: FC = () => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate, chooseSpace } = state;
@@ -104,7 +104,7 @@ export const Harbor: FC = () => {
     return clickablePrecheck && gamestate.Harbor[index] === null;
   };
 
-  return state === undefined ? undefined : (
+  return state === undefined ? <></> : (
     <>
       {gamestate.Harbor.map((color, i) =>
         clickable(i) ? (

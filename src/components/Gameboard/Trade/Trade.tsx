@@ -115,7 +115,7 @@ export const Trade: FC = () => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate, chooseSpace } = state;
@@ -131,7 +131,7 @@ export const Trade: FC = () => {
     return index % 4 === mods[chosen.symbol];
   };
 
-  return state === undefined ? undefined : (
+  return state === undefined ? <></> : (
     <>
       {/* POINTS */}
       {gamestate.bonus.Trade.map((color, i) => (

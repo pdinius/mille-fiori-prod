@@ -12,7 +12,7 @@ export const Hand: FC<HandProps> = ({ selected, setSelected }) => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate } = state;

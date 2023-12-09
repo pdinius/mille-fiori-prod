@@ -7,7 +7,7 @@ export const Stats: FC = () => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { gamestate } = state;

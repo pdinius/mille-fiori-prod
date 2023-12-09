@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styles from "./Card.module.scss";
-import { CardData } from "../../../../deck";
 import harbor1 from "../../assets/cards/Harbor-1.jpg";
 import harbor2 from "../../assets/cards/Harbor-2.jpg";
 import harbor3 from "../../assets/cards/Harbor-3.jpg";
@@ -81,6 +80,7 @@ import workshopsQuartz2 from "../../assets/cards/Workshops-quartz-2.jpg";
 import workshopsQuartz3 from "../../assets/cards/Workshops-quartz-3.jpg";
 import workshopsQuartz4 from "../../assets/cards/Workshops-quartz-4.jpg";
 import workshopsQuartz5 from "../../assets/cards/Workshops-quartz-5.jpg";
+import { CardData } from "../../types";
 
 const images: { [key: string]: string } = {
   "Harbor-1": harbor1,

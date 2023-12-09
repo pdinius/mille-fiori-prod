@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styles from "./ColorPicker.module.scss";
-import { PlayerColor } from "../../../../server/types";
 import { diamondThumbs } from "../../diamonds";
 import socket from "../../socket";
+import { PlayerColor } from "../../types";
 
 export interface ColorPickerProps {
   name: string;

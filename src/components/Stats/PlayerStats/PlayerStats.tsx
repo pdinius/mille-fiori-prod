@@ -4,11 +4,11 @@ import red from "../../../assets/stats/red.png";
 import orange from "../../../assets/stats/orange.png";
 import green from "../../../assets/stats/green.png";
 import purple from "../../../assets/stats/purple.png";
-import { PlayerColor } from "../../../../../server/types";
 import { GameContext } from "../../../App";
 import doge from "../../../assets/cards/doge.jpg";
+import { PlayerColor } from "../../../types";
 
-const images = {
+const images: { [key in PlayerColor]: string } = {
   red,
   orange,
   green,
@@ -23,7 +23,7 @@ export const PlayerStats: FC<PlayerStatsProps> = ({ color }) => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { gamestate } = state;

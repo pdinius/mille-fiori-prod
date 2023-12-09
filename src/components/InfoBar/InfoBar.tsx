@@ -30,7 +30,7 @@ export const InfoBar: FC<InfoBarProps> = ({ selectedCard, setSelectedCard, selec
   };
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate } = state;

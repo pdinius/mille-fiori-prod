@@ -1,11 +1,11 @@
 import { FC, useEffect, useRef, useState } from "react";
 import styles from "./Lobby.module.scss";
 import socket from "../../socket";
-import { PlayerColor } from "../../../../server/types";
 import intro from "../../assets/intro-bg.jpg";
 import { Elipses } from "../Elipses/Elipses";
 import { ColorPicker } from "../ColorPicker/ColorPicker";
 import { diamondThumbs } from "../../diamonds";
+import { PlayerColor } from "../../types";
 
 interface LobbyProps {
   name: string;

@@ -76,7 +76,7 @@ export const TownspeopleB: FC = () => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate, chooseSpace } = state;
@@ -103,7 +103,7 @@ export const TownspeopleB: FC = () => {
     }
   };
 
-  return state === undefined ? undefined : (
+  return state === undefined ? <></> : (
     <>
       {/* POINTS */}
       {gamestate.bonus.TownspeopleB.map((color, i) => (

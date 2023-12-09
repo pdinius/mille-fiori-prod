@@ -12,7 +12,7 @@ export const Extras: FC<ExtrasProps> = ({ selected, setSelected }) => {
   const state = useContext(GameContext);
 
   if (state?.gamestate === undefined) {
-    return undefined;
+    return <></>;
   }
 
   const { name, gamestate } = state;
