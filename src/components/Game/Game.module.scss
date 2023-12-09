@@ -1,0 +1,11 @@
+.game {
+  flex-grow: 1;
+  width: 1200px;
+  max-width: calc(100% - 2rem);
+  display: flex;
+  gap: 2rem;
+}
+
+.left {
+  flex-grow: 1;
+}

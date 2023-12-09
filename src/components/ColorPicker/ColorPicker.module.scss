@@ -1,0 +1,18 @@
+.colorPicker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0.5rem;
+}
+
+.unavailable {
+  opacity: 0.4;
+}
+
+.available {
+  transition: filter 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+  }
+}

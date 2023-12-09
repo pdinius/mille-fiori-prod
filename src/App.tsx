@@ -1,45 +1,62 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.scss'
+import { createContext, useEffect, useState } from "react";
+import styles from "./App.module.scss";
+import socket from "./socket";
+import { Gamestate } from "../../server/types";
+import { Corner, CornerProps } from "./components/Corner/Corner";
+import { Lobby } from "./components/Lobby/Lobby";
+import { Stats } from "./components/Stats/Stats";
+import { Game } from "./components/Game/Game";
+
+const CORNERS: Array<CornerProps["which"]> = [
+  "top-left",
+  "top-right",
+  "bottom-left",
+  "bottom-right",
+];
+
+export const GameContext = createContext<null | {
+  name: string;
+  gamestate?: Gamestate;
+  chooseSpace: (index: number) => void;
+}>(null);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState(localStorage.getItem("name") || "");
+  const [gamestate, setGamestate] = useState<Gamestate>();
+
+  useEffect(() => {
+    socket.on("send-gamestate", (game) => {
+      localStorage.setItem("game-id", game.id);
+      setGamestate(game);
+    });
+
+    return () => {
+      socket.off("send-gamestate");
+    };
+  });
+
+  const chooseSpace = (index: number) => {
+    if (!gamestate?.id) {
+      throw Error("Gamestate id is undefined.");
+    }
+    socket.emit("choose-space", index, name, gamestate.id);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + Reactzzzzz!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className={styles.container}>
+      {CORNERS.map((c, i) => (
+        <Corner key={i} which={c} />
+      ))}
+      {gamestate ? (
+        <GameContext.Provider value={{ name, gamestate, chooseSpace }}>
+          <Stats />
+          <Game />
+        </GameContext.Provider>
+      ) : (
+        <Lobby name={name} setName={setName} />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
